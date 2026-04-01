@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DMG & Sons Construction | Custom Homes & Remodeling | Truckee, CA</title>
+  <meta name="description" content="DMG & Sons Construction — Truckee's premier general contractor. Custom homes, remodels, and commercial projects in the Lake Tahoe region. 40+ years of experience. CSLB #992545.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sierra: {
+              50: '#f0f5fa',
+              100: '#dbe6f2',
+              200: '#b8cfe6',
+              500: '#2b6cb0',
+              600: '#1e5a9a',
+              700: '#174a7e',
+              800: '#113962',
+              900: '#0c2a49',
+              950: '#071b30',
+            },
+            summit: {
+              50: '#f8f9fa',
+              100: '#f1f3f5',
+              200: '#e9ecef',
+              300: '#dee2e6',
+              400: '#ced4da',
+              500: '#adb5bd',
+              600: '#868e96',
+              700: '#495057',
+              800: '#343a40',
+              900: '#212529',
+            },
+            timber: {
+              400: '#c4a882',
+              500: '#b08d5f',
+              600: '#96753e',
+            }
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'serif'],
+            body: ['Source Sans 3', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', sans-serif; background: #f8f9fa; color: #212529; overflow-x: hidden; }
+
+    /* Subtle grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { opacity: 0; animation: fadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    .fade-up-1 { animation-delay: 0.1s; }
+    .fade-up-2 { animation-delay: 0.25s; }
+    .fade-up-3 { animation-delay: 0.4s; }
+    .fade-up-4 { animation-delay: 0.55s; }
+
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Button */
+    .btn-primary {
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(43, 108, 176, 0.3);
+    }
+    .btn-primary:focus-visible { outline: 2px solid #2b6cb0; outline-offset: 3px; }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-outline {
+      transition: background 0.2s ease, color 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .btn-outline:hover { background: #2b6cb0; color: #fff; transform: translateY(-2px); }
+    .btn-outline:focus-visible { outline: 2px solid #2b6cb0; outline-offset: 3px; }
+    .btn-outline:active { transform: translateY(0); }
+
+    /* Nav */
+    .nav-link { position: relative; transition: color 0.2s ease; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: #2b6cb0;
+      transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nav-link:hover { color: #2b6cb0; }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:focus-visible { outline: 2px solid #2b6cb0; outline-offset: 4px; border-radius: 2px; }
+
+    /* Mobile nav */
+    .mobile-nav { transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+    .mobile-nav.open { transform: translateX(0); }
+
+    /* Service card */
+    .service-card { transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease; }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(43, 108, 176, 0.15);
+    }
+
+    /* Accent line */
+    .accent-line { width: 50px; height: 3px; background: linear-gradient(90deg, #2b6cb0, #1e5a9a); border-radius: 2px; }
+
+    /* Project image overlay */
+    .project-overlay { opacity: 0; transition: opacity 0.35s ease; }
+    .group:hover .project-overlay { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAV ==================== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/90 border-b border-summit-200/60">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 h-18 flex items-center justify-between" style="height:72px;">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group" aria-label="DMG & Sons Construction home">
+        <svg class="h-12 w-auto transition-transform duration-300 group-hover:scale-105" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Mountain icon -->
+          <path d="M8 40 L20 10 L32 40 Z" fill="#1e5a9a"/>
+          <path d="M18 40 L26 22 L34 40 Z" fill="#2b6cb0" opacity="0.7"/>
+          <path d="M14 28 L20 16 L26 28" stroke="#4da3e8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- DMG box -->
+          <rect x="40" y="8" width="32" height="32" rx="4" stroke="#1e5a9a" stroke-width="2.5" fill="none"/>
+          <text x="56" y="30" text-anchor="middle" font-family="'Playfair Display',serif" font-weight="700" font-size="14" fill="#1e5a9a">DMG</text>
+          <!-- Text -->
+          <text x="82" y="24" font-family="'Playfair Display',serif" font-weight="700" font-size="18" fill="#212529">DMG &amp; Sons</text>
+          <text x="82" y="38" font-family="'Source Sans 3',sans-serif" font-weight="700" font-size="10" letter-spacing="2" fill="#1e5a9a">CONSTRUCTION</text>
+        </svg>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#services" class="nav-link text-sm font-body font-semibold text-summit-700">Services</a>
+        <a href="#about" class="nav-link text-sm font-body font-semibold text-summit-700">About</a>
+        <a href="#projects" class="nav-link text-sm font-body font-semibold text-summit-700">Projects</a>
+        <a href="#contact" class="nav-link text-sm font-body font-semibold text-summit-700">Contact</a>
+        <a href="tel:+15303868023" class="btn-primary inline-flex items-center gap-2 bg-sierra-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          (530) 386-8023
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="menuBtn" class="md:hidden p-2 text-summit-700 hover:text-sierra-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-sierra-600 rounded" aria-label="Open menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile nav panel -->
+    <div id="mobileNav" class="mobile-nav fixed inset-y-0 right-0 w-72 bg-white border-l border-summit-200 z-50 flex flex-col p-8 md:hidden shadow-2xl">
+      <button id="closeBtn" class="self-end p-2 text-summit-600 hover:text-sierra-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-sierra-600 rounded" aria-label="Close menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="flex flex-col gap-6 mt-10">
+        <a href="#services" class="mobile-link block text-lg font-body font-semibold text-summit-800 hover:text-sierra-600 transition-colors">Services</a>
+        <a href="#about" class="mobile-link block text-lg font-body font-semibold text-summit-800 hover:text-sierra-600 transition-colors">About</a>
+        <a href="#projects" class="mobile-link block text-lg font-body font-semibold text-summit-800 hover:text-sierra-600 transition-colors">Projects</a>
+        <a href="#contact" class="mobile-link block text-lg font-body font-semibold text-summit-800 hover:text-sierra-600 transition-colors">Contact</a>
+        <a href="tel:+15303868023" class="block btn-primary bg-sierra-600 text-white text-center font-semibold px-5 py-3 rounded-lg mt-4">(530) 386-8023</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative min-h-screen flex items-center overflow-hidden">
+    <!-- Background image — mountain lake house -->
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1557973155-75a84a7d3a0d?w=1920&auto=format&fit=crop&q=80" alt="" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-r from-sierra-950/85 via-sierra-900/70 to-sierra-950/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-sierra-950/60 via-transparent to-sierra-950/30"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-20 w-full">
+      <div class="max-w-2xl">
+        <div class="fade-up fade-up-1">
+          <div class="flex items-center gap-3 mb-8">
+            <div class="accent-line"></div>
+            <span class="font-body text-sm font-semibold tracking-[0.15em] uppercase text-sierra-200">Truckee, CA — Est. 2013</span>
+          </div>
+        </div>
+
+        <h1 class="fade-up fade-up-2 font-display text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.05] mb-6" style="letter-spacing:-0.02em;">
+          Building the<br>Sierra's Finest<br>
+          <span class="text-sierra-200">Since Day One</span>
+        </h1>
+
+        <p class="fade-up fade-up-3 font-body text-lg text-white/70 max-w-lg leading-relaxed mb-10" style="line-height:1.7;">
+          From custom mountain homes to full-scale remodels, DMG & Sons Construction brings over 40 years of experience to every project in the Truckee–Tahoe region.
+        </p>
+
+        <div class="fade-up fade-up-4 flex flex-col sm:flex-row gap-4">
+          <a href="tel:+15303868023" class="btn-primary inline-flex items-center justify-center gap-3 bg-sierra-600 hover:bg-sierra-700 text-white font-body font-semibold text-base px-8 py-4 rounded-xl">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Get a Free Estimate
+          </a>
+          <a href="#services" class="btn-outline inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white font-body font-semibold text-base px-8 py-4 rounded-xl">
+            Our Services
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="fade-up fade-up-4 flex flex-wrap items-center gap-6 mt-12 pt-8 border-t border-white/10">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-sierra-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+            <span class="font-body text-sm text-white/60">CSLB #992545</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-sierra-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+            <span class="font-body text-sm text-white/60">BBB A+ Rated</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-sierra-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="font-body text-sm text-white/60">40+ Years Experience</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SERVICES ==================== -->
+  <section id="services" class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <span class="text-sierra-600 text-sm font-body font-semibold tracking-[0.2em] uppercase">What We Do</span>
+        <h2 class="font-display text-4xl lg:text-5xl text-summit-900 mt-4" style="letter-spacing:-0.02em;">Our Services</h2>
+        <div class="accent-line mx-auto mt-6"></div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Custom Homes -->
+        <div class="service-card reveal bg-summit-800 border border-summit-700/40 rounded-2xl overflow-hidden group">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1611602132349-7032e597432a?w=600&auto=format&fit=crop&q=80" alt="Custom mountain home in a forest setting" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" style="filter: brightness(0.7) saturate(0.8);">
+            <div class="absolute inset-0 bg-gradient-to-t from-summit-800 via-summit-800/30 to-summit-800/10"></div>
+          </div>
+          <div class="p-7 pt-3">
+            <h3 class="font-display text-xl text-white mb-2">Custom Homes</h3>
+            <p class="font-body text-summit-400 text-sm leading-relaxed" style="line-height:1.7;">Ground-up custom home construction designed for mountain living. From architectural planning through final walkthrough.</p>
+          </div>
+        </div>
+
+        <!-- Kitchen Remodeling -->
+        <div class="service-card reveal bg-summit-800 border border-summit-700/40 rounded-2xl overflow-hidden group">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1759239572496-4ec13e7643d6?w=600&auto=format&fit=crop&q=80" alt="Modern kitchen with wood countertops and island" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" style="filter: brightness(0.7) saturate(0.8);">
+            <div class="absolute inset-0 bg-gradient-to-t from-summit-800 via-summit-800/30 to-summit-800/10"></div>
+          </div>
+          <div class="p-7 pt-3">
+            <h3 class="font-display text-xl text-white mb-2">Kitchen Remodeling</h3>
+            <p class="font-body text-summit-400 text-sm leading-relaxed" style="line-height:1.7;">Full kitchen transformations — custom cabinetry, countertops, appliance integration, and layouts built for how you actually cook and entertain.</p>
+          </div>
+        </div>
+
+        <!-- Bathroom Remodeling -->
+        <div class="service-card reveal bg-summit-800 border border-summit-700/40 rounded-2xl overflow-hidden group">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1750036015902-c6f5ebca924e?w=600&auto=format&fit=crop&q=80" alt="Elegant modern bathroom with natural accents" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" style="filter: brightness(0.7) saturate(0.8);">
+            <div class="absolute inset-0 bg-gradient-to-t from-summit-800 via-summit-800/30 to-summit-800/10"></div>
+          </div>
+          <div class="p-7 pt-3">
+            <h3 class="font-display text-xl text-white mb-2">Bathroom Remodeling</h3>
+            <p class="font-body text-summit-400 text-sm leading-relaxed" style="line-height:1.7;">Spa-inspired bathroom renovations with premium tile, custom vanities, and fixtures chosen to complement your home's style.</p>
+          </div>
+        </div>
+
+        <!-- Whole-Home Remodels -->
+        <div class="service-card reveal bg-summit-800 border border-summit-700/40 rounded-2xl overflow-hidden group">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1697124510306-26d01f1b775f?w=600&auto=format&fit=crop&q=80" alt="Beautiful open-concept home interior with kitchen island" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" style="filter: brightness(0.7) saturate(0.8);">
+            <div class="absolute inset-0 bg-gradient-to-t from-summit-800 via-summit-800/30 to-summit-800/10"></div>
+          </div>
+          <div class="p-7 pt-3">
+            <h3 class="font-display text-xl text-white mb-2">Whole-Home Remodels</h3>
+            <p class="font-body text-summit-400 text-sm leading-relaxed" style="line-height:1.7;">Complete interior renovations that modernize your living space while respecting the character of your mountain home.</p>
+          </div>
+        </div>
+
+        <!-- Additions -->
+        <div class="service-card reveal bg-summit-800 border border-summit-700/40 rounded-2xl overflow-hidden group">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1563874093519-ca5eda5cd776?w=600&auto=format&fit=crop&q=80" alt="House frame construction with exposed timber" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" style="filter: brightness(0.7) saturate(0.8);">
+            <div class="absolute inset-0 bg-gradient-to-t from-summit-800 via-summit-800/30 to-summit-800/10"></div>
+          </div>
+          <div class="p-7 pt-3">
+            <h3 class="font-display text-xl text-white mb-2">Additions</h3>
+            <p class="font-body text-summit-400 text-sm leading-relaxed" style="line-height:1.7;">Need more space? We design and build additions that integrate seamlessly with your existing structure — no afterthought aesthetics.</p>
+          </div>
+        </div>
+
+        <!-- Commercial -->
+        <div class="service-card reveal bg-summit-800 border border-summit-700/40 rounded-2xl overflow-hidden group">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1672627170267-fca17bb54156?w=600&auto=format&fit=crop&q=80" alt="Aerial view of commercial building under construction" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" style="filter: brightness(0.7) saturate(0.8);">
+            <div class="absolute inset-0 bg-gradient-to-t from-summit-800 via-summit-800/30 to-summit-800/10"></div>
+          </div>
+          <div class="p-7 pt-3">
+            <h3 class="font-display text-xl text-white mb-2">Commercial Projects</h3>
+            <p class="font-body text-summit-400 text-sm leading-relaxed" style="line-height:1.7;">From multi-unit developments to commercial build-outs, we bring residential-grade attention to detail to projects of any scale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section id="about" class="py-24 lg:py-32 bg-summit-50">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Left: Image -->
+        <div class="reveal">
+          <div class="relative">
+            <div class="rounded-2xl overflow-hidden shadow-xl shadow-summit-900/10">
+              <img src="https://images.unsplash.com/photo-1653280662710-1cac52cde6d7?w=800&auto=format&fit=crop&q=80" alt="Construction crew working together on a job site" class="w-full aspect-[4/3] object-cover">
+            </div>
+            <!-- Floating stat card -->
+            <div class="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-lg shadow-summit-900/10 border border-summit-200/60 p-5 hidden sm:block">
+              <div class="text-center">
+                <span class="font-display text-3xl text-sierra-600">40+</span>
+                <p class="font-body text-xs text-summit-500 font-medium mt-1">Years of Combined<br>Experience</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Text -->
+        <div class="reveal">
+          <span class="text-sierra-600 text-sm font-body font-semibold tracking-[0.2em] uppercase">Our Story</span>
+          <h2 class="font-display text-4xl lg:text-5xl text-summit-900 mt-4 leading-[1.1]" style="letter-spacing:-0.02em;">A Family-Built<br>Legacy of Craft</h2>
+          <div class="accent-line mt-6 mb-8"></div>
+
+          <p class="font-body text-summit-600 text-base leading-relaxed mb-6" style="line-height:1.7;">
+            DMG & Sons Construction was founded by <strong class="text-summit-800">David Gardner</strong>, a seasoned real estate developer with over four decades of experience building in California's most demanding environments.
+          </p>
+          <p class="font-body text-summit-600 text-base leading-relaxed mb-8" style="line-height:1.7;">
+            Today, David's eldest son <strong class="text-summit-800">Cole Gardner</strong> leads the day-to-day construction operations, bringing the same commitment to quality that has defined the Gardner name. From custom mountain homes to the renowned 211-unit Boulders complex — we build things that last.
+          </p>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white rounded-xl border border-summit-200/60 p-5">
+              <div class="flex items-center gap-3 mb-2">
+                <svg class="w-5 h-5 text-sierra-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <h4 class="font-body font-semibold text-summit-800 text-sm">Licensed & Bonded</h4>
+              </div>
+              <p class="font-body text-summit-500 text-xs leading-relaxed">CA State License #992545</p>
+            </div>
+            <div class="bg-white rounded-xl border border-summit-200/60 p-5">
+              <div class="flex items-center gap-3 mb-2">
+                <svg class="w-5 h-5 text-sierra-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
+                <h4 class="font-body font-semibold text-summit-800 text-sm">BBB A+ Rated</h4>
+              </div>
+              <p class="font-body text-summit-500 text-xs leading-relaxed">Better Business Bureau</p>
+            </div>
+            <div class="bg-white rounded-xl border border-summit-200/60 p-5">
+              <div class="flex items-center gap-3 mb-2">
+                <svg class="w-5 h-5 text-sierra-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+                <h4 class="font-body font-semibold text-summit-800 text-sm">Local Team</h4>
+              </div>
+              <p class="font-body text-summit-500 text-xs leading-relaxed">Based in Truckee since 2013</p>
+            </div>
+            <div class="bg-white rounded-xl border border-summit-200/60 p-5">
+              <div class="flex items-center gap-3 mb-2">
+                <svg class="w-5 h-5 text-sierra-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
+                <h4 class="font-body font-semibold text-summit-800 text-sm">Clear Communication</h4>
+              </div>
+              <p class="font-body text-summit-500 text-xs leading-relaxed">Constant updates until done</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FEATURED PROJECT ==================== -->
+  <section id="projects" class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <span class="text-sierra-600 text-sm font-body font-semibold tracking-[0.2em] uppercase">Featured Work</span>
+        <h2 class="font-display text-4xl lg:text-5xl text-summit-900 mt-4" style="letter-spacing:-0.02em;">Notable Projects</h2>
+        <div class="accent-line mx-auto mt-6"></div>
+      </div>
+
+      <!-- The Boulders Feature -->
+      <div class="reveal bg-summit-50 border border-summit-200/60 rounded-3xl overflow-hidden">
+        <div class="grid lg:grid-cols-2">
+          <div class="relative h-72 lg:h-auto overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1687707985204-9bfdabce482f?w=800&auto=format&fit=crop&q=80" alt="Lake Tahoe landscape — The Boulders development area" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent to-summit-50/20 hidden lg:block"></div>
+          </div>
+          <div class="p-8 lg:p-12 flex flex-col justify-center">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sierra-600/10 text-sierra-600 text-xs font-body font-semibold w-fit mb-4">
+              <span class="w-1.5 h-1.5 rounded-full bg-sierra-600"></span>
+              Landmark Project
+            </span>
+            <h3 class="font-display text-3xl text-summit-900 mb-4" style="letter-spacing:-0.01em;">The Boulders at Truckee</h3>
+            <p class="font-body text-summit-600 text-base leading-relaxed mb-6" style="line-height:1.7;">
+              A 211-unit condominium complex that stands as one of Truckee's most significant residential developments. This project showcases the scale and quality DMG brings to large multi-family construction — from site work through final finishes.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-3 py-1.5 bg-white border border-summit-200/60 rounded-lg text-xs font-body font-medium text-summit-600">211 Units</span>
+              <span class="px-3 py-1.5 bg-white border border-summit-200/60 rounded-lg text-xs font-body font-medium text-summit-600">Multi-Family</span>
+              <span class="px-3 py-1.5 bg-white border border-summit-200/60 rounded-lg text-xs font-body font-medium text-summit-600">Truckee, CA</span>
+              <span class="px-3 py-1.5 bg-white border border-summit-200/60 rounded-lg text-xs font-body font-medium text-summit-600">Full Build</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SERVICE AREA ==================== -->
+  <section class="py-20 bg-sierra-900 text-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center reveal">
+        <div>
+          <span class="text-sierra-200 text-sm font-body font-semibold tracking-[0.2em] uppercase">Where We Work</span>
+          <h2 class="font-display text-3xl lg:text-4xl text-white mt-4 leading-[1.15]" style="letter-spacing:-0.02em;">Proudly Serving the<br>Truckee–Tahoe Region</h2>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <span class="px-4 py-2 bg-white/10 border border-white/10 rounded-lg text-sm font-body text-white/80">Truckee</span>
+          <span class="px-4 py-2 bg-white/10 border border-white/10 rounded-lg text-sm font-body text-white/80">Tahoe City</span>
+          <span class="px-4 py-2 bg-white/10 border border-white/10 rounded-lg text-sm font-body text-white/80">North Lake Tahoe</span>
+          <span class="px-4 py-2 bg-white/10 border border-white/10 rounded-lg text-sm font-body text-white/80">Olympic Valley</span>
+          <span class="px-4 py-2 bg-white/10 border border-white/10 rounded-lg text-sm font-body text-white/80">Donner Lake</span>
+          <span class="px-4 py-2 bg-white/10 border border-white/10 rounded-lg text-sm font-body text-white/80">Kings Beach</span>
+          <span class="px-4 py-2 bg-white/10 border border-white/10 rounded-lg text-sm font-body text-white/80">Incline Village</span>
+          <span class="px-4 py-2 bg-sierra-600/30 border border-sierra-500/30 rounded-lg text-sm font-body text-sierra-200 font-medium">+ Surrounding Areas</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT CTA ==================== -->
+  <section id="contact" class="py-24 lg:py-32 bg-white">
+    <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center reveal">
+      <span class="text-sierra-600 text-sm font-body font-semibold tracking-[0.2em] uppercase">Get In Touch</span>
+      <h2 class="font-display text-4xl lg:text-5xl text-summit-900 mt-4 leading-[1.1] mb-6" style="letter-spacing:-0.02em;">Ready to Start<br>Your Project?</h2>
+      <p class="font-body text-summit-600 text-lg max-w-xl mx-auto mb-10" style="line-height:1.7;">
+        Give us a call or send an email — we'd love to discuss your project and provide a free, no-obligation estimate.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-5 mb-12">
+        <a href="tel:+15303868023" class="btn-primary inline-flex items-center gap-3 bg-sierra-600 hover:bg-sierra-700 text-white font-body font-semibold text-lg px-10 py-5 rounded-xl">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          (530) 386-8023
+        </a>
+        <a href="mailto:Cole@dmgdevelopments.com" class="btn-outline inline-flex items-center gap-3 border-2 border-sierra-600 text-sierra-600 font-body font-semibold text-lg px-10 py-5 rounded-xl">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          Email Us
+        </a>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-8 text-summit-700">
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-sierra-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+          <span class="font-body text-sm">Truckee, CA 96161</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-sierra-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+          <span class="font-body text-sm">Cole@dmgdevelopments.com</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-summit-900 border-t border-summit-800 py-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-4">
+          <svg class="h-9 w-auto" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 32 L18 6 L32 32 Z" fill="#2b6cb0"/>
+            <path d="M12 32 L18 16 L24 32 Z" fill="#4da3e8" opacity="0.6"/>
+          </svg>
+          <div class="leading-none">
+            <span class="font-display text-base text-white">DMG & Sons</span>
+            <span class="block text-[10px] font-body font-medium tracking-[0.15em] text-sierra-200/60 uppercase">Construction</span>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center gap-4 text-sm font-body text-summit-400">
+          <a href="tel:+15303868023" class="hover:text-sierra-200 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-sierra-500 rounded">(530) 386-8023</a>
+          <span class="hidden sm:inline text-summit-600">|</span>
+          <span>Truckee, CA 96161</span>
+          <span class="hidden sm:inline text-summit-600">|</span>
+          <span>CSLB #992545</span>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-summit-800 text-center">
+        <p class="font-body text-xs text-summit-600">&copy; 2026 David M Gardner & Sons Construction, Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JS ==================== -->
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileNav = document.getElementById('mobileNav');
+
+    menuBtn.addEventListener('click', () => { mobileNav.classList.add('open'); menuBtn.setAttribute('aria-expanded', 'true'); });
+    closeBtn.addEventListener('click', () => { mobileNav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => { mobileNav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); });
+    });
+
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    revealElements.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
